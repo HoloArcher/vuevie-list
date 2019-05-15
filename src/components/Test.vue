@@ -1,18 +1,18 @@
 <template>
-  <v-container grid-list-lg fluid >
+  <v-container grid-list-lg  >
     <v-layout 
       row
       reverse
       justify-center
-      wrap
       fill-height
+      style="flex-wrap: wrap-reverse;"
     >
       <v-flex
-        v-for="(d, i) in store.state.localdb" 
+        v-for="(d, i) in store.getters.filteredList" 
         :key="i" 
-        max-width= "50vw"
+
         style="flex-basis: 350px; "
-        
+        shrink
        >
         <v-card 
         raised
@@ -20,13 +20,13 @@
 
         >
             <v-card-title>
-              <h2>{{ store.state.localdb[ i ].data.title  }}</h2>
+              <h2>{{ store.getters.filteredList[ i ].title  }}</h2>
             </v-card-title>
           <v-img
           max-height="100%"
           min-width="100%"
           class="white--text"
-          v-bind:src='"https://image.tmdb.org/t/p/original/" + store.state.localdb[i].data.poster_path'
+          v-bind:src='"https://image.tmdb.org/t/p/original/" + store.getters.filteredList[i].poster_path'
             
             
           >

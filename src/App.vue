@@ -1,23 +1,33 @@
 <template>
   <v-app v-bind:dark="store.state.dark">
-    <v-toolbar app >
-        
-        <v-toolbar-title>
-          <span class="accent--text text-thin">
-            Vuevie
-          </span>List
-        </v-toolbar-title>
+    <v-toolbar app>
+      <v-toolbar-title>
+        <h1>
+          <span class="accent--text text-thin">Vuevie</span>
+          List
+        </h1>
+      </v-toolbar-title>
 
-        <v-spacer></v-spacer>
-        <v-text-field           v-model="store.state.search"
- prepend-inner-icon="search" class="mx-3" solo-inverted placeholder="Search"></v-text-field>
+      <v-spacer></v-spacer>
+      <v-text-field
+        v-model="store.state.search"
+        prepend-inner-icon="search"
+        class="mx-3"
+        solo-inverted
+        placeholder="Search"
+      ></v-text-field>
+      <v-btn
+      fab
+      color="success"
+      raised
+      ripple
+      @click="test()"
+      >
+      <v-icon>add</v-icon>
+      </v-btn>
 
-        
-        <v-spacer></v-spacer>
+      <v-spacer></v-spacer>
     </v-toolbar>
-
-    
-
     <v-content>
       <Test/>
     </v-content>
@@ -25,6 +35,7 @@
 </template>
 
 <script>
+
 // import HelloWorld from './components/HelloWorld'
 import Test from "./components/Test";
 // import firebase from 'firebase'
@@ -36,7 +47,8 @@ export default {
     Test
   },
   data() {
-    return { store: store };
+    return { store: store, test: () =>{store.commit('addel')} };
   }
 };
+
 </script>

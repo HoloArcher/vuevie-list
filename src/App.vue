@@ -1,6 +1,6 @@
 <template>
-  <v-app v-bind:dark="store.state.dark">
-    <v-toolbar app>
+  <v-app v-bind:dark="store.state.dark" >
+    <v-toolbar app z-index="999">
       <v-toolbar-title>
         <h1>
           <span class="accent--text text-thin">Vuevie</span>

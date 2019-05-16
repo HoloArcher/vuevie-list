@@ -35,18 +35,16 @@ export const store = new Vuex.Store({
         localdb: [],
         firedb: [],
         show: false,
-        dark: true,
-
+        dark: false,
         search: '',
-
-
         api_key: '2fb2a73cdabea954fa733209911eea69',
 
     },
     // getimdbObject (query, callback) {
     mutations: {
         createLocalDB(f) {  //takes an id and gets the movie of that id from imdb 
-
+            store.state.localdb = [];
+            
             var urlbody = 'https://api.themoviedb.org/3/movie/';
 
             async function geg(query) {
@@ -71,19 +69,18 @@ export const store = new Vuex.Store({
             // var id = store.commit('getimdbObject', store.state.search).results[0].id;
             // var id = await getimdbObject(store.state.search).data.results[0].id
             var whyarewestillhere = await getimdbObject(store.state.search)
-            console.log( );
+ 
             var id = whyarewestillhere.data.results[0].id
-
-
-            store.actions.PUSH_firedb({
+            
+            var item = {
                 id: id,
                 object: 'filler',
                 rating: 'filler'
-            })
+            }
+            
+            store.state.firedb.push(item);
 
-            fire.set(store.getters.GET_firedb)
-            store.commit('createLocalDB');
-
+            await fire.set(store.getters.GET_firedb)
 
 
         },
@@ -92,11 +89,7 @@ export const store = new Vuex.Store({
     actions: {
 
     },
-
-
     getters: {
-        
-
         GET_firedb: () => {
             return store.state.firedb
         },
@@ -110,8 +103,6 @@ export const store = new Vuex.Store({
             // return preobj
             return preobj.filter(item => item.title.toUpperCase().includes(query.toUpperCase()));
         },
-
-        GET_text(f) { return f; }
     },
     computed: {
 

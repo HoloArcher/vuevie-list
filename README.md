@@ -1,4 +1,5 @@
 # quiz-frontend
+## Clone from github
 
 ## Project setup
 ```
